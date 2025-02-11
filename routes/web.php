@@ -112,3 +112,24 @@ Route::domain('{account}.example.com')->group(function () {
         return "Ini adalah halaman akun: " . $account;
     });
 });
+
+//Previx
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return "Halaman dashboard admin.";
+    });
+    Route::get('/db', function () {
+        return "Halaman db admin.";
+    });
+});
+
+//Name prefix
+Route::name('pre')->prefix('cobalagi')->group(function () {
+    Route::get('/dashboard', function () {
+        return "Halaman dashboard prefix name.";
+    })->name('pv.dashboard');
+
+    Route::get('/user', function () {
+        return "Halaman pengguna prefix name.";
+    })->name('pv.user');
+});
