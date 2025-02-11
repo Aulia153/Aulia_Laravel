@@ -78,3 +78,37 @@ Route::get('/search/{search}', function ($search) {
 
 //Acara4
 //Generate URL
+Route::get('/profile', [UserController::class, 'showProfile'])->name('profileku');
+Route::get('generate-url', [UserController::class, 'generateProfileUrl']);
+Route::get('/redirect-profile', [UserController::class, 'redirectToProfile']);
+Route::get('/params/{id?}', function ($id) {
+    return "ID diterima: " . $id;
+})->name('params_id');
+Route::get('/test-url', function () {
+    $url = route('params_id', ["id" => 5]);
+    dd($url);
+});
+
+//check route
+Route::get('/profileCek', [UserController::class, 'showProfile']) ->name('profile')
+->middleware('check.route'); //diambil dari app
+
+//middleware
+Route::middleware(['check.user'])->group(function () {
+    Route::get('/dashboard', [UserController::class, 'dasshboardLog'])->name('Dashboard');
+    Route::get('/profileL', [UserController::class, 'profileLog'])->name('Profile');
+    Route::get('/settings', [UserController::class, 'settingsLog'])->name('Settings');
+});
+
+//Namespaces
+Route::namespace('App\Http\Controllers\User')->group(function () {
+    Route::get('/user/info', 'UserController@info')->name('user.info');
+    Route::get('/user/data', 'DataController@data')->name('user.data');
+});
+
+//Subdomain Routing
+Route::domain('{account}.example.com')->group(function () {
+    Route::get('/', function ($account) {
+        return "Ini adalah halaman akun: " . $account;
+    });
+});
