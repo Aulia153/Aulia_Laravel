@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\ManagementUserController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 //ACARA 3
@@ -77,7 +78,7 @@ Route::get('/search/{search}', function ($search) {
 })->where('search', '.*');
 
 //Acara4
-//Generate URL
+//Generate URL ke Route Bersama
 Route::get('/profile', [UserController::class, 'showProfile'])->name('profileku');
 Route::get('generate-url', [UserController::class, 'generateProfileUrl']);
 Route::get('/redirect-profile', [UserController::class, 'redirectToProfile']);
@@ -124,7 +125,7 @@ Route::prefix('admin')->group(function () {
 });
 
 //Name prefix
-Route::name('pre')->prefix('cobalagi')->group(function () {
+Route::name('pre')->prefix('tryagain')->group(function () {
     Route::get('/dashboard', function () {
         return "Halaman dashboard prefix name.";
     })->name('pv.dashboard');
@@ -133,3 +134,6 @@ Route::name('pre')->prefix('cobalagi')->group(function () {
         return "Halaman pengguna prefix name.";
     })->name('pv.user');
 });
+
+//Acara5
+Route::resource('managuser', ManagementUserController::class);
