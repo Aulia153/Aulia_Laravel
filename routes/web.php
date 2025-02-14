@@ -152,13 +152,12 @@ Route::name('pre')->prefix('tryagain')->group(function () {
 });
 
 //Acara5
-Route::resource('managuser', ManagementUserController::class);
+Route::resource('/managuser', ManagementUserController::class);
 
 //Acara 6
 //Membuat view sederhana
 //Route::get('/home', function () {
-//    return view('home');
+//    return view('home');  
 //});
-Route::get('/managhome', [ManagementUserController::class, 'index']);
 
 //frontend 

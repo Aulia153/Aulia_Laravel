@@ -10,6 +10,7 @@
         <div class="container">
                 <h1 class="display-4">Halaman Home</h1>
                 <p class="lead">Halaman ini merupakan halaman home</p>
+                @yield('content')
             </div>
         </div>
     </body>
