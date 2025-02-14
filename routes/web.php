@@ -21,7 +21,7 @@ Route::get('/foo/{id}', function ($id) {
 });
 
 //Menentukan parameter route yang diperlukan
-Route::get('posts/{post/comments/{comment}', function ($postID, $commentID) {
+Route::get('posts/{post}/comments/{comment}', function ($postID, $commentID) {
     //
 });
 
@@ -30,6 +30,22 @@ Route::get('/user', [UserController::class, 'viewUser'])->name('user');
 
 //Route method  post
 Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
+
+//Method Route
+//Route::get($uri, $callback);
+//Route::post($uri, $callback);
+//Route::put($uri, $callback);
+//Route::patch($uri, $callback);
+//Route::delete($uri, $callback);
+//Route::options($uri, $callback);
+
+Route::match(['get', 'post'], '/', function () {
+    //
+});
+
+Route::any('/', function () {
+    //
+});
 
 //Redirect route
 Route::redirect('/here', '/there');
@@ -42,7 +58,7 @@ Route::redirect('/here307', '/there', 307); //temporary redirect
 Route::redirect('/here308', '/there', 308); //permanen redirect
 
 //Route view
-Route::view('/wwelcome', 'welcome');
+Route::view('/welcome', 'welcome');
 Route::view('/welcome', 'welcome', ['name' => 'Aulia']);
 
 //Parameter opsional
@@ -96,7 +112,7 @@ Route::get('/profileCek', [UserController::class, 'showProfile']) ->name('profil
 
 //middleware
 Route::middleware(['check.user'])->group(function () {
-    Route::get('/dashboard', [UserController::class, 'dasshboardLog'])->name('Dashboard');
+    Route::get('/dashboard', [UserController::class, 'dashboardLog'])->name('Dashboard');
     Route::get('/profileL', [UserController::class, 'profileLog'])->name('Profile');
     Route::get('/settings', [UserController::class, 'settingsLog'])->name('Settings');
 });
@@ -114,7 +130,7 @@ Route::domain('{account}.example.com')->group(function () {
     });
 });
 
-//Previx
+//Prevfix
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
         return "Halaman dashboard admin.";
@@ -140,6 +156,9 @@ Route::resource('managuser', ManagementUserController::class);
 
 //Acara 6
 //Membuat view sederhana
-Route::get('/home', function () {
-    return view('home');
-});
+//Route::get('/home', function () {
+//    return view('home');
+//});
+Route::get('/managhome', [ManagementUserController::class, 'index']);
+
+//frontend 
