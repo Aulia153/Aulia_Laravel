@@ -72,6 +72,7 @@
 
         </div>
     </header>
+    
     <main class="main">
         @yield('main-content')
     </main>
