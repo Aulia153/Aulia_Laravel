@@ -1,25 +1,25 @@
-@extends('layouts.main')
+@extends('frontend.layouts.template')
 @section('main-content')
 
-@include('template.hero')
+@include('frontend.hero')
 
-@include('template.about')
+@include('frontend.about')
 
-@include('template.clients')
+@include('frontend.clients')
 
-@include('template.contact')
+@include('frontend.contact')
 
-@include('template.footer')
+@include('frontend.footer')
 
-@include('template.gallery')
+@include('frontend.gallery')
 
-@include('template.portofolio')
+@include('frontend.portofolio')
 
-@include('template.services')
+@include('frontend.services')
 
-@include('template.stats')
+@include('frontend.stats')
 
-@include('template.team')
+@include('frontend.team')
 
-@include('template.testimonials')
+@include('frontend.testimonials')
 @endsection

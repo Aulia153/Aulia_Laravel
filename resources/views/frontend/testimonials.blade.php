@@ -1,7 +1,7 @@
  <!-- Testimonials Section -->
  <section id="testimonials" class="testimonials section dark-background">
 
-<img src="{{ asset('butterfly/assets/img/testimonials-bg.jpg') }}" class="testimonials-bg" alt="">
+<img src="{{ asset('frontend/assets/img/testimonials-bg.jpg') }}" class="testimonials-bg" alt="">
 
 <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -25,7 +25,7 @@
 
             <div class="swiper-slide">
                 <div class="testimonial-item">
-                    <img src="{{ asset('butterfly/assets/img/testimonials/testimonials-1.jpg') }}"
+                    <img src="{{ asset('frontend/assets/img/testimonials/testimonials-1.jpg') }}"
                         class="testimonial-img" alt="">
                     <h3>Saul Goodman</h3>
                     <h4>Ceo &amp; Founder</h4>
@@ -46,7 +46,7 @@
 
             <div class="swiper-slide">
                 <div class="testimonial-item">
-                    <img src="{{ asset('butterfly/assets/img/testimonials/testimonials-2.jpg') }}"
+                    <img src="{{ asset('frontend/assets/img/testimonials/testimonials-2.jpg') }}"
                         class="testimonial-img" alt="">
                     <h3>Sara Wilsson</h3>
                     <h4>Designer</h4>
@@ -67,7 +67,7 @@
 
             <div class="swiper-slide">
                 <div class="testimonial-item">
-                    <img src="{{ asset('butterfly/assets/img/testimonials/testimonials-3.jpg') }}"
+                    <img src="{{ asset('frontend/assets/img/testimonials/testimonials-3.jpg') }}"
                         class="testimonial-img" alt="">
                     <h3>Jena Karlis</h3>
                     <h4>Store Owner</h4>
@@ -88,7 +88,7 @@
 
             <div class="swiper-slide">
                 <div class="testimonial-item">
-                    <img src="{{ asset('butterfly/assets/img/testimonials/testimonials-4.jpg') }}"
+                    <img src="{{ asset('frontend/assets/img/testimonials/testimonials-4.jpg') }}"
                         class="testimonial-img" alt="">
                     <h3>Matt Brandon</h3>
                     <h4>Freelancer</h4>
@@ -109,7 +109,7 @@
 
             <div class="swiper-slide">
                 <div class="testimonial-item">
-                    <img src="{{ asset('butterfly/assets/img/testimonials/testimonials-5.jpg') }}"
+                    <img src="{{ asset('frontend/assets/img/testimonials/testimonials-5.jpg') }}"
                         class="testimonial-img" alt="">
                     <h3>John Larson</h3>
                     <h4>Entrepreneur</h4>

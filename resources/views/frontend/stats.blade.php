@@ -1,7 +1,7 @@
 <!-- Stats Section -->
 <section id="stats" class="stats section light-background">
 
-<img src="{{ asset('butterfly/assets/img/stats-bg.jpg') }}" alt="" data-aos="fade-in">
+<img src="{{ asset('frontend/assets/img/stats-bg.jpg') }}" alt="" data-aos="fade-in">
 
 <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
 
