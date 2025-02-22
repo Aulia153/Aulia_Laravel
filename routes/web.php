@@ -174,5 +174,3 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend'], function () {
 Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
     Route::resource('dashboard', 'DashboardController');
 });
-
-//Acara 9
