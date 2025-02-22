@@ -171,3 +171,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend'], function () {
 });
 
 //Acara 8 backend
+Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
+    Route::resource('dashboard', DashboardController::class);
+});
