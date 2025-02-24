@@ -167,13 +167,17 @@ Route::get('/coba/butterfly', function() {
 
 //Acara 7 frontend
 Route::group(['namespace' => 'App\Http\Controllers\Frontend'], function () {
-    Route::resource('home', HomeController::class);
+    Route::resource('homes', HomeController::class);
 });
 
 //Acara 8 backend
 Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
     Route::resource('dashboard', 'DashboardController');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 

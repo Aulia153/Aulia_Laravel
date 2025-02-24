@@ -13,7 +13,7 @@ class ManagementUserController extends Controller
        $name = "Aulia Silmi Mardiyanti";
        $pelajaran = ["Jaringan Komputer", "Pemograman web", "Kalkulus"];
 
-       return view('home', compact('name', 'pelajaran'));
+       return view('homes', compact('name', 'pelajaran'));
     }
 
     public function create() {
