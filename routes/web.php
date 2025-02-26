@@ -167,7 +167,7 @@ Route::get('/coba/butterfly', function() {
 
 //Acara 7 frontend
 Route::group(['namespace' => 'App\Http\Controllers\Frontend'], function () {
-    Route::resource('homes', HomeController::class);
+    Route::resource('homes', 'HomeController');
 });
 
 //Acara 8 backend

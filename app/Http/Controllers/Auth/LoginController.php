@@ -39,6 +39,12 @@ class LoginController extends Controller
         $this->middleware('auth')->only('logout');
     }
 
+    //menentukan user login menggunakan email atau username
+    public function username() {
+        $login = request()->input('login');
+        return filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+    }
+
     public function login(Request $request){
         $this->validate($request, [
             'username' => 'required|string',

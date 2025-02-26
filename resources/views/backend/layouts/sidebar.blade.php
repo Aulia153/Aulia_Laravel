@@ -1,11 +1,11 @@
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
-    <ul class="sidebar-nav" id="sidebar-nav">
-
-      <li class="nav-item">
-        <a class="nav-link " href="index.html">
-          <i class="bi bi-grid"></i>
+    <!-- sidebar menu start-->
+    <ul class="sidebar-menu" id="sidebar-nav">
+      <li class="active">
+        <a class="" href="index.html">
+          <i class="icon_house_alt"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
@@ -88,7 +88,7 @@
         </ul>
       </li><!-- End Components Nav -->
 
-      <li class="nav-item">
+      <li class="sub-menu">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
