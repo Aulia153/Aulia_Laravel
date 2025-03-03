@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\PengalamanKerjaController;
+use App\Http\Controllers\Backend\PendidikanController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\User\UserController;
@@ -173,6 +175,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend'], function () {
 //Acara 8 backend
 Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
     Route::resource('dashboard', 'DashboardController');
+    Route::resource('pengalaman_kerja', PengalamanKerjaController::class);
+    Route::resource('pendidikan', PendidikanController::class);
 });
 
 Auth::routes();
