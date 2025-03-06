@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\CobaController;
 use Illuminate\Support\Facades\Route;
@@ -212,3 +213,10 @@ Route::post('/formulir/proses',[PegawaiController::class, 'proses'])->name('form
 //coba error
 //Route::get('/cobaerror', 'CobaController@index');
 Route::get('/cobaerror/{nama?}',[CobaController::class, 'index']);
+
+//Acara19
+//upload dan proses upload
+Route::get('/upload', [UploadController::class, 'upload']);
+Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name('upload.proses');
+//route menuju ke function resize_upload
+//Route::post('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload.resize');

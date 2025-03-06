@@ -1,5 +1,8 @@
 <?php
 
+use Carbon\Laravel\ServiceProvider;
+use Illuminate\Support\Facades\Facade;
+
 return [
 
     /*
@@ -123,4 +126,14 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    // 'providers' => ServiceProvider::defaultProviders()->merge([
+    //     /*
+    //     * Package Service Providers...
+    //     */
+    //     Intervention\Image\ImageServiceProvider::class,
+    // ])->toArray(),
+
+    // 'aliases' => Facade::defaultAliases()->merge([
+    //     'Image' => Intervention\Image\Facades\Image::class,
+    // ])->toArray(),
 ];
