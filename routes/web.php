@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\PengalamanKerjaController;
 use App\Http\Controllers\Backend\PendidikanController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\ManagementUserController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -169,7 +170,7 @@ Route::get('/coba/butterfly', function() {
 
 //Acara 7 frontend
 Route::group(['namespace' => 'App\Http\Controllers\Frontend'], function () {
-    Route::resource('homes', 'HomeController');
+    Route::resource('homeee', 'HomeController');
 });
 
 //Acara 8 backend
@@ -190,3 +191,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Acara 17
+//create session
