@@ -8,6 +8,7 @@ use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\CobaController;
 use Illuminate\Support\Facades\Route;
 
 //ACARA 3
@@ -206,3 +207,8 @@ Route::get('/pegawai/{nama}',[PegawaiController::class, 'index']);
 //menangkap data melalui inputan
 Route::get('/formulir',[PegawaiController::class, 'formulir']);
 Route::post('/formulir/proses',[PegawaiController::class, 'proses'])->name('formulir.proses');
+
+//acara 18 
+//coba error
+//Route::get('/cobaerror', 'CobaController@index');
+Route::get('/cobaerror/{nama?}',[CobaController::class, 'index']);

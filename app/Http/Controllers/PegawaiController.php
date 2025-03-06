@@ -19,6 +19,18 @@ class PegawaiController extends Controller
     }
 
     public function proses(Request $request) {
+        $messages = [
+            'required' => 'Input :attribute wajib diisi',
+            'min' => 'Input :attribute harus diisi minimal :min karakter!',
+            'max' => 'Input :atrribute harus diisi maksimal :max karakter!',
+        ];
+
+        $this->validate($request,[
+            'nama' => 'required|min:5|max:20',
+            'alamat' => 'required|alpha'
+        ], $messages);
+
+        
         $nama = $request->input('nama');
         $alamat = $request->input('alamat');
 
