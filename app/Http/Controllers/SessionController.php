@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 
 class SessionController extends Controller
 {
-    public function index() {
-        return "SessionController is working!";
-    }
+    
     //membuat session
     public function create(Request $request) {
         $request->session()->put('nama', 'Politeknik Negeri Jember');

@@ -126,14 +126,11 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
-    // 'providers' => ServiceProvider::defaultProviders()->merge([
-    //     /*
-    //     * Package Service Providers...
-    //     */
+    // 'providers' => [
     //     Intervention\Image\ImageServiceProvider::class,
-    // ])->toArray(),
+    // ],
 
-    // 'aliases' => Facade::defaultAliases()->merge([
+    // 'aliases' => [
     //     'Image' => Intervention\Image\Facades\Image::class,
-    // ])->toArray(),
+    // ],
 ];

@@ -169,7 +169,7 @@ Route::resource('/managuser', ManagementUserController::class);
 //});
 Route::get('/managhome', [ManagementUserController::class, 'index']);
 Route::get('/coba/butterfly', function() {
-    return view('butterfly');
+    return view('frontend.butterfly');
 });
 
 //Acara 7 frontend
@@ -211,7 +211,7 @@ Route::post('/formulir/proses',[PegawaiController::class, 'proses'])->name('form
 
 //acara 18 
 //coba error
-//Route::get('/cobaerror', 'CobaController@index');
+Route::get('/cobaerror', [CobaController::class,'index']);
 Route::get('/cobaerror/{nama?}',[CobaController::class, 'index']);
 
 //Acara19
@@ -220,3 +220,11 @@ Route::get('/upload', [UploadController::class, 'upload']);
 Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name('upload.proses');
 //route menuju ke function resize_upload
 //Route::post('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload.resize');
+
+//Acara 20
+Route::get('/dropzone', [UploadController::class, 'dropzone']);
+Route::post('/dropzone/store', [UploadController::class, 'dropzone_store'])->name('dropzone.store');
+
+//Route untuk upload file
+Route::get('/pdf_upload', [UploadController::class, 'pdf_upload'])->name('pdf.upload');
+Route::post('/pdf/store', [UploadController::class, 'pdf_store'])->name('pdf.store');

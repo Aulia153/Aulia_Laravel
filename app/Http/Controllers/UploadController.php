@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use File;
+use Image;
 
 class UploadController extends Controller
 {
@@ -30,11 +32,11 @@ class UploadController extends Controller
         echo 'File Mime Type: ' .$file->getMimeType();
         //isi dengan nama folder tempat kemana file diupload
         $tujuan_upload = 'data_file';
-        //upload file
+        //Upload File
         $file->move($tujuan_upload, $file->getClientOriginalName());
     }
 
-    // public function upload_resize(Request $request) {
+    // public function resize_upload(Request $request) {
     //     $this->validate($request, [
     //         'file' => 'required',
     //         'keterangan' => 'required',
@@ -72,5 +74,29 @@ class UploadController extends Controller
     //     } else {
     //         return redirect(route('upload'))->with('error', 'Data gagal ditambahkan!');
     //     }
-    // }
+    //}
+
+    public function dropzone() {
+        return view('dropzone');
+    }
+
+    public function dropzone_store(Request $request) {
+        $image = $request->file('file');
+
+        $imageName = time().'.'.$image->extension();
+        $image->move(public_path('img/dropzone'), $imageName);
+        return response()->json(['success' => $imageName]);
+    }
+
+    public function pdf_upload() {
+        return view('pdf_upload');
+    }
+
+    public function pdf_store(Request $request) {
+        $pdf = $request->file('file');
+
+        $pdfName = 'pdf_'.'.'.$pdf->extension();
+        $pdf->move(public_path('pdf/dropzone'), $pdfName);
+        return response()->json(['success' => $pdfName]);
+    }
 }
