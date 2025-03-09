@@ -10,6 +10,7 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\CobaController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 //ACARA 3
@@ -161,6 +162,13 @@ Route::name('pre')->prefix('tryagain')->group(function () {
 
 //Acara5
 Route::resource('/managuser', ManagementUserController::class);
+// Route::get('/managuser', [ManagementUserController::class, 'index']);
+// Route::get('/managuser/create', [ManagementUserController::class, 'create']);
+// Route::post('/managuser', [ManagementUserController::class, 'store']);
+// Route::get('/managuser/{id}', [ManagementUserController::class, 'show']);
+// Route::get('/managuser/{id}/edit', [ManagementUserController::class, 'edit']);
+// Route::put('/managuser/{id}', [ManagementUserController::class, 'update']);
+// Route::delete('/managuser/{id}', [ManagementUserController::class, 'destroy']);
 
 //Acara 6
 //Membuat view sederhana
@@ -168,13 +176,13 @@ Route::resource('/managuser', ManagementUserController::class);
 //    return view('home');  
 //});
 Route::get('/managhome', [ManagementUserController::class, 'index']);
-Route::get('/coba/butterfly', function() {
-    return view('frontend.butterfly');
-});
+// Route::get('/coba/butterfly', function() {
+//     return view('frontend.butterfly');
+// });
 
 //Acara 7 frontend
 Route::group(['namespace' => 'App\Http\Controllers\Frontend'], function () {
-    Route::resource('homeee', 'HomeController');
+    Route::resource('homeee', HomeController::class);
 });
 
 //Acara 8 backend
@@ -188,23 +196,17 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 //Acara 17
 //create session
-Route::resource('session',SessionController::class);
+Route::get('/session/create', [SessionController::class, 'create']);
 //show session
-Route::resource('session/show',SessionController::class);
+Route::get('/session/show', [SessionController::class, 'show']);
 //delete session
-Route::resource('session/delete',SessionController::class);
-//Mengkat data URI parameter variable
+Route::get('session/delete',[SessionController::class, 'delete']);
+
+//menangkap data URI parameter variable
 Route::get('/pegawai/{nama}',[PegawaiController::class, 'index']);
+
 //menangkap data melalui inputan
 Route::get('/formulir',[PegawaiController::class, 'formulir']);
 Route::post('/formulir/proses',[PegawaiController::class, 'proses'])->name('formulir.proses');
@@ -218,13 +220,21 @@ Route::get('/cobaerror/{nama?}',[CobaController::class, 'index']);
 //upload dan proses upload
 Route::get('/upload', [UploadController::class, 'upload']);
 Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name('upload.proses');
+
 //route menuju ke function resize_upload
-//Route::post('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload.resize');
+// Route::get('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload.resize');
+// Route::post('/upload/resize/proses', [UploadController::class, 'proses_upload_resize'])->name('upload.proses.resize');
 
 //Acara 20
-Route::get('/dropzone', [UploadController::class, 'dropzone']);
+//Multiple Upload menggunakan dropzone
+Route::get('/dropzone', [UploadController::class, 'dropzone'])->name('dropzone');
 Route::post('/dropzone/store', [UploadController::class, 'dropzone_store'])->name('dropzone.store');
 
-//Route untuk upload file
+//Route untuk upload pdf 
 Route::get('/pdf_upload', [UploadController::class, 'pdf_upload'])->name('pdf.upload');
 Route::post('/pdf/store', [UploadController::class, 'pdf_store'])->name('pdf.store');
+
+//Acara 21
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });

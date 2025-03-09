@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use File;
-use Image;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\ImageManager;
 
 class UploadController extends Controller
 {
@@ -31,12 +31,16 @@ class UploadController extends Controller
         //tipe mime
         echo 'File Mime Type: ' .$file->getMimeType();
         //isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'data_file';
+        $tujuan_upload = public_path('data_file');
         //Upload File
         $file->move($tujuan_upload, $file->getClientOriginalName());
     }
 
-    // public function resize_upload(Request $request) {
+    // public function resize_upload() {
+    //     return view('resize_upload');
+    // }
+    
+    // Public function proses_upload_resize(Request $request, ImageManager $imageManager) {
     //     $this->validate($request, [
     //         'file' => 'required',
     //         'keterangan' => 'required',
@@ -57,24 +61,16 @@ class UploadController extends Controller
     //     //membuat name file dari gabungan tanggal dan uniqid()
     //     $fileName = 'logo_'. uniqid() . '.' .$file->getClientOriginalExtension();
 
-    //     //membuat canvas image sebesar dimensi
-    //     $canvas = Image::canvas(200, 200);
+    //     //membaca gambar melalui ImageManager
+    //     $image = $imageManager->read($file->getRealPath());
 
     //     //resize image sesuai dimensi dengan mempertahankan ratio
-    //     $resizeImage = Image::make($file)->resize(null, 200, function($constraint) {
-    //         $constraint->aspectRatio();
-    //     });
-
-    //     //memasukkan image yang telah diresize ke dalam canvas
-    //     $canvas->insert($resizeImage, 'center');
+    //     $resizeImage = $image->cover(200,200);
 
     //     //simpan image ke folder
-    //     if($canvas->save($path . '/' . $fileName)) {
-    //         return redirect(route('upload'))->with('success', 'Data berhassil ditambahkan!');
-    //     } else {
-    //         return redirect(route('upload'))->with('error', 'Data gagal ditambahkan!');
-    //     }
-    //}
+    //     file_put_contents($path . '/' . $fileName, $resizeImage->toJpeg());
+    //     return redirect(route('upload.resize'))->with('success', 'Data berhasil ditambahkan!');
+    // }
 
     public function dropzone() {
         return view('dropzone');

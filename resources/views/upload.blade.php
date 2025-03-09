@@ -16,23 +16,6 @@
                     @endforeach
                 </div>
                 @endif
-                 {{-- Pesan jika sukses --}}
-                 <!-- @if (session('success'))
-                 <div class="alert alert-success alert-dismissible">
-                    <a href="#" class="close text-decoration-none"
-                    data-dismiss="alert" aria-label="close">&times;</a>
-                    {{ session('success') }}
-                 </div>
-                 @endif -->
-
-                 {{-- Peringatan Jika Error --}}
-                 <!-- @if (session('error'))
-                 <div class="alert alert-danger alert-dismissible">
-                    <a href="#" class="close text-decoration-none"
-                    data-dismiss="alert" aria-label="close">&times;</a>
-                    {{ session('error') }}
-                 </div>
-                 @endif -->
 
                 <form action="{{ route('upload.proses') }}" method="POST"
                 enctype="multipart/form-data">
