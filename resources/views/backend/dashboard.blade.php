@@ -16,8 +16,8 @@
   <div class="row">
 
     <!-- Left side columns -->
-    <div class="col-lg-8">
-       <div class="row">
+    <!-- <div class="col-lg-8">
+       <div class="row"> -->
 
         <!-- Sales Card -->
         <!-- <div class="col-xxl-4 col-md-6">
@@ -55,7 +55,7 @@
         </div>End Sales Card -->
 
         <!-- Revenue Card -->
-        <div class="col-xxl-4 col-md-6">
+        <!-- <div class="col-xxl-4 col-md-6">
           <div class="card info-card revenue-card">
 
             <div class="filter">
@@ -87,10 +87,10 @@
             </div>
 
           </div>
-        </div><!--End Revenue Card-->
+        </div>End Revenue Card -->
 
         <!-- Customers Card -->
-        <div class="col-xxl-4 col-xl-12">
+        <!-- <div class="col-xxl-4 col-xl-12">
 
           <div class="card info-card customers-card">
 
@@ -124,10 +124,10 @@
             </div>
           </div>
 
-        </div><!--End Customers Card-->
+        </div>End Customers Card -->
 
         <!-- Reports -->
-        <div class="col-12">
+        <!-- <div class="col-12">
           <div class="card">
 
             <div class="filter">
@@ -144,10 +144,10 @@
             </div>
 
             <div class="card-body">
-              <h5 class="card-title">Reports <span>/Today</span></h5> 
+              <h5 class="card-title">Reports <span>/Today</span></h5>  -->
 
               <!-- Line Chart -->
-              <div id="reportsChart"></div>
+              <!-- <div id="reportsChart"></div>
 
               <script>
                 document.addEventListener("DOMContentLoaded", () => {
@@ -200,16 +200,16 @@
                     }
                   }).render();
                 });
-              </script>
+              </script> -->
               <!-- End Line Chart -->
 
-            </div>
+            <!-- </div>
 
           </div>
-        </div><!--End Reports-->
+        </div>End Reports -->
 
         <!-- Recent Sales -->
-        <div class="col-12">
+        <!-- <div class="col-12">
           <div class="card recent-sales overflow-auto">
 
             <div class="filter">
@@ -280,10 +280,10 @@
             </div>
 
           </div>
-       </div><!--End Recent Sales -->
+       </div>End Recent Sales -->
 
         <!-- Top Selling -->
-        <div class="col-12">
+        <!-- <div class="col-12">
           <div class="card top-selling overflow-auto">
 
             <div class="filter">
@@ -354,12 +354,12 @@
             </div>
 
           </div>
-        </div><!--End Top Selling-->
+        </div>End Top Selling -->
 
-      </div>
-    </div><!--End Left side columns -->
+      <!-- </div>
+    </div>End Left side columns -->
 
-  </div>
-</section>
+  <!-- </div>
+</section> -->
 
 @endsection
