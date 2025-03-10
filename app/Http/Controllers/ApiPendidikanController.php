@@ -10,39 +10,83 @@ use Illuminate\Support\Facades\Response;
 
 class ApiPendidikanController extends Controller
 {
-    // public function getAll(){
-    //     $pendidikan = Pendidikan::all();
-    //     return Response::json($pendidikan, 201);
-    // }
-    // public function getPen($id){
-    //     $pendidikan = Pendidikan::find($id);
-    //     return Response::json($pendidikan, 200);
-    // }
+    public function getAll()
+    {
+        $pendidikan = Pendidikan::all();
 
-    //CREATE
-    // public function createPen(Request $request){
-    //     Pendidikan::create($request->all());
-    //     return response()->json([
-    //         'status'=> 'ok',
-    //         'message' => 'Pendidikan berhasil ditambahkan!'
-    //     ], 201);
-    // }
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Pendidikan',
+            'data' => $pendidikan
+        ]);
+    }
 
-    //UPDATE
-    // public function updatePen($id, Request $request){
-    //     Pendidikan::find($id)->update($request->all());
-    //     return response()->json([
-    //         'status'=> 'ok',
-    //         'message' => 'Pendidikan berhasil dirubah!'
-    //     ], 201);
-    // }
+    // Tambah data pendidikan
+    public function createPen(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'tingkatan' => 'required|integer',
+            'tahun_masuk' => 'required|integer|min:1900|max:2099',
+            'tahun_keluar' => 'required|integer|min:1900|max:2099',
+        ]);
 
-    // //DELETE
-    // public function deletePen($id){
-    //     Pendidikan::destroy($id);
-    //     return response()->json([
-    //         'status'=> 'ok',
-    //         'message' => 'Pendidikan berhasil dihapus!'
-    //     ], 201);
-    // }
+        $pendidikan = Pendidikan::create([
+            'nama' => $request->nama,
+            'tingkatan' => $request->tingkatan,
+            'tahun_masuk' => $request->tahun_masuk,
+            'tahun_keluar' => $request->tahun_keluar,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data berhasil ditambahkan!',
+            'data' => $pendidikan
+        ]);
+    }
+
+    // Update data pendidikan
+    public function updatePen(Request $request, $id)
+    {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'tingkatan' => 'required|integer',
+            'tahun_masuk' => 'required|integer|min:1900|max:2099',
+            'tahun_keluar' => 'required|integer|min:1900|max:2099',
+        ]);
+
+        $pendidikan = Pendidikan::find($id);
+        if (!$pendidikan) {
+            return response()->json(['success' => false, 'message' => 'Data tidak ditemukan!'], 404);
+        }
+
+        $pendidikan->update([
+            'nama' => $request->nama,
+            'tingkatan' => $request->tingkatan,
+            'tahun_masuk' => $request->tahun_masuk,
+            'tahun_keluar' => $request->tahun_keluar,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data berhasil diperbarui!',
+            'data' => $pendidikan
+        ]);
+    }
+
+    // Hapus data pendidikan
+    public function deletePen($id)
+    {
+        $pendidikan = Pendidikan::find($id);
+        if (!$pendidikan) {
+            return response()->json(['success' => false, 'message' => 'Data tidak ditemukan!'], 404);
+        }
+
+        $pendidikan->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data berhasil dihapus!'
+        ]);
+    }
 }
