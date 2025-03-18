@@ -14,7 +14,7 @@ class UploadController extends Controller
 
     public function proses_upload(Request $request) {
         $this->validate($request, [
-            'file' => 'required',
+            'file' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
             'keterangan' => 'required',
         ]);
 
@@ -36,41 +36,41 @@ class UploadController extends Controller
         $file->move($tujuan_upload, $file->getClientOriginalName());
     }
 
-    // public function resize_upload() {
-    //     return view('resize_upload');
-    // }
+    public function resize_upload() {
+        return view('resize_upload');
+    }
     
-    // Public function proses_upload_resize(Request $request, ImageManager $imageManager) {
-    //     $this->validate($request, [
-    //         'file' => 'required',
-    //         'keterangan' => 'required',
-    //     ]);
+    Public function proses_upload_resize(Request $request, ImageManager $imageManager) {
+        $request->validate([
+            'file' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+            'keterangan' => 'required',
+        ]);
 
-    //     //Tentukan path lokasi upload
-    //     $path = public_path('img/logo');
+        //Tentukan path lokasi upload
+        $path = public_path('img/logo');
 
-    //     //jika folder belum ada
-    //     if (!File::isDirectory($path)) {
-    //         //maka folder tersebut akan dibuat
-    //         File::makeDirectory($path, 0777, true);
-    //     }
+        //jika folder belum ada
+        if (!File::isDirectory($path)) {
+            //maka folder tersebut akan dibuat
+            File::makeDirectory($path, 0777, true);
+        }
 
-    //     //mengambil file image dari form
-    //     $file = $request->file('file');
+        //mengambil file image dari form
+        $file = $request->file('file');
 
-    //     //membuat name file dari gabungan tanggal dan uniqid()
-    //     $fileName = 'logo_'. uniqid() . '.' .$file->getClientOriginalExtension();
+        //membuat name file dari gabungan tanggal dan uniqid()
+        $fileName = 'logo_'. uniqid() . '.' .$file->getClientOriginalExtension();
 
-    //     //membaca gambar melalui ImageManager
-    //     $image = $imageManager->read($file->getRealPath());
+        //membaca gambar melalui ImageManager
+        $image = $imageManager->read($file->getRealPath());
 
-    //     //resize image sesuai dimensi dengan mempertahankan ratio
-    //     $resizeImage = $image->cover(200,200);
+        //resize image sesuai dimensi dengan mempertahankan ratio
+        $resizeImage = $image->cover(200,200);
 
-    //     //simpan image ke folder
-    //     file_put_contents($path . '/' . $fileName, $resizeImage->toJpeg());
-    //     return redirect(route('upload.resize'))->with('success', 'Data berhasil ditambahkan!');
-    // }
+        //simpan image ke folder
+        file_put_contents($path . '/' . $fileName, $resizeImage->toJpeg());
+        return redirect(route('upload.resize'))->with('success', 'Data berhasil ditambahkan!');
+    }
 
     public function dropzone() {
         return view('dropzone');

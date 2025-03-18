@@ -1,6 +1,8 @@
 @extends('frontend.layouts.template')
 @section('main-content')
 
+@include('frontend.layouts.navbar')
+
 @include('frontend.layouts.hero')
 
 @include('frontend.layouts.about')

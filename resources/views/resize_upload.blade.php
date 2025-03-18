@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 
 <head>
@@ -23,30 +23,30 @@
 
             <div class="card shadow-sm p-4">
                 <form action="{{ route('upload.proses.resize') }}" method="POST" enctype="multipart/form-data">
-                    @csrf -->
+                    @csrf
 
                     <!-- Input File Gambar -->
-                    <!-- <div class="mb-3">
+                    <div class="mb-3">
                         <label for="file" class="form-label fw-bold">File Gambar</label>
                         <input type="file" name="file" id="file"
                             class="form-control @error('file') is-invalid @enderror">
                         @error('file')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
-                    </div> -->
+                    </div>
 
                     <!-- Input Keterangan -->
-                    <!-- <div class="mb-3">
+                    <div class="mb-3">
                         <label for="keterangan" class="form-label fw-bold">Keterangan</label>
                         <textarea name="keterangan" id="keterangan" class="form-control @error('keterangan') is-invalid @enderror"
                             rows="4">{{ old('keterangan') }}</textarea>
                         @error('keterangan')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
-                    </div> -->
+                    </div>
 
                     <!-- Tombol Submit -->
-                    <!-- <button type="submit" class="btn btn-primary">Upload</button>
+                    <button type="submit" class="btn btn-primary">Upload</button>
                 </form>
             </div>
         </div>
@@ -55,4 +55,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
-</html> -->
+</html>

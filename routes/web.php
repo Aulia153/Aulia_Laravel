@@ -12,6 +12,7 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\CobaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 //ACARA 3
 //route name
@@ -222,8 +223,8 @@ Route::get('/upload', [UploadController::class, 'upload']);
 Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name('upload.proses');
 
 //route menuju ke function resize_upload
-// Route::get('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload.resize');
-// Route::post('/upload/resize/proses', [UploadController::class, 'proses_upload_resize'])->name('upload.proses.resize');
+Route::get('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload.resize');
+Route::post('/upload/resize/proses', [UploadController::class, 'proses_upload_resize'])->name('upload.proses.resize');
 
 //Acara 20
 //Multiple Upload menggunakan dropzone
