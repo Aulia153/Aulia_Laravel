@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Pendidikan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PendidikanController extends Controller
 {
@@ -14,7 +13,7 @@ class PendidikanController extends Controller
      */
     public function index()
     {
-        $pendidikan = DB::table('pendidikan')->get();
+        $pendidikan = Pendidikan::all();
         return view('backend.pendidikan.index', compact('pendidikan'));
     }
 
@@ -32,47 +31,34 @@ class PendidikanController extends Controller
      */
     public function store(Request $request)
     {
-
-        DB::table('pendidikan')->insert([
-            'nama' => $request->nama,
-            'tingkatan' => $request->tingkatan,
-            'tahun_masuk' => $request->tahun_masuk,
-            'tahun_keluar' => $request->tahun_keluar
-        ]);
-
-        return redirect()->route('pendidikan.index')->with('success', 'Data pendidikan berhasil ditambahkan!');
+        Pendidikan::create($request->all());
+        return redirect()->route('pendidikan.index')
+        ->with('success', 'Data pendidikan berhasil ditambahkan!');
     }
 
     /**
      * Menampilkan form edit pendidikan.
      */
-    public function edit($id)
+    public function edit(Pendidikan $pendidikan)
     {
-        $pendidikan = DB::table('pendidikan')->where('id', $id)->first();
         return view('backend.pendidikan.edit', compact('pendidikan'));
     }
 
     /**
      * Mengupdate data pendidikan.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Pendidikan $pendidikan)
     {
-        DB::table('pendidikan')->where('id', $id)->update([
-            'nama' => $request->nama,
-            'tingkatan' => $request->tingkatan,
-            'tahun_masuk' => $request->tahun_masuk,
-            'tahun_keluar' => $request->tahun_keluar
-        ]);
-
+        $pendidikan->update($request->all());
         return redirect()->route('pendidikan.index')->with('success', 'Data pendidikan berhasil diperbarui!');
     }
 
     /**
      * Menghapus data pendidikan dengan konfirmasi.
      */
-    public function destroy($id)
+    public function destroy(Pendidikan $pendidikan)
     {
-        DB::table('pendidikan')->where('id', $id)->delete();
+        $pendidikan->delete();
         return redirect()->route('pendidikan.index')->with('success', 'Data pendidikan berhasil dihapus!');
     }
 }

@@ -186,7 +186,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Frontend'], function () {
     Route::resource('homeee', HomeController::class);
 });
 
-//Acara 8 backend
+//Acara 8 backend + acara 13-16 crud
 Route::group(['namespace' => 'App\Http\Controllers\Backend'], function() {
     Route::resource('dashboard', 'DashboardController');
     Route::resource('pengalaman_kerja', PengalamanKerjaController::class);

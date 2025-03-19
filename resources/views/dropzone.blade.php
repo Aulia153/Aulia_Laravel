@@ -25,6 +25,8 @@
         <script type="text/javascript">
             Dropzone.options.imageUpload = {
                 maxFilesize: 10,
+                maxFiles: 10,
+                parallelUploads: 10,
                 acceptedFiles: ".jpeg, .jpg, .png, .gif",
                 addRemoveLinks: true,
                 createImageThumbnails: true,

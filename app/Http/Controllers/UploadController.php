@@ -77,11 +77,21 @@ class UploadController extends Controller
     }
 
     public function dropzone_store(Request $request) {
-        $image = $request->file('file');
+        $request->validate([
+            'file.*' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
 
-        $imageName = time().'.'.$image->extension();
-        $image->move(public_path('img/dropzone'), $imageName);
-        return response()->json(['success' => $imageName]);
+        $uploadedFiles = [];
+
+        if ($request->hasFile('file')) {
+            foreach ($request->file('file') as $image) {
+                $imageName = time() . '_' . uniqid() . '.' . $image->extension();
+                $image->move(public_path('img/dropzone'), $imageName);
+                $uploadedFiles[] = $imageName;
+            }
+        }
+
+        return response()->json(['success' => true, 'files' => $uploadedFiles]);
     }
 
     public function pdf_upload() {
@@ -89,10 +99,20 @@ class UploadController extends Controller
     }
 
     public function pdf_store(Request $request) {
-        $pdf = $request->file('file');
+        $request->validate([
+            'file.*' => 'required|mimes:pdf|max:5210',
+        ]);
 
-        $pdfName = 'pdf_'.'.'.$pdf->extension();
-        $pdf->move(public_path('pdf/dropzone'), $pdfName);
-        return response()->json(['success' => $pdfName]);
+        $uploadedFiles = [];
+
+        if($request->hasFile('file')) {
+            foreach ($request->file('file') as $pdf) {
+                $pdfName = time() . '_' . uniqid() . '.' . $pdf->extension();
+                $pdf->move(public_path('pdf/dropzone'), $pdfName);
+                $uploadedFiles[] = $pdfName;
+            }
+        }
+
+        return response()->json(['sucsess' => true, 'files' => $uploadedFiles]);
     }
 }

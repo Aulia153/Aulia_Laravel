@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="text-center">Dropzone PDF Upload in Laravel</h1><br>
-                    <form action="{{ route('pdf.store') }}" method="post" class="dropzone" id="pdf-upload">
+                    <form action="{{ route('pdf.store') }}" method="post" class="dropzone" id="pdf-upload" enctype="multipart/form-data">
                     @csrf
                 </form>
                 <button type="button" id="button" class="btn btn-primary">Upload</button>
@@ -22,11 +22,15 @@
         </div>
         <script type="text/javascript">
             var MyDropzone = new Dropzone ('#pdf-upload', {
-                maxFilesize: 1,
+                maxFilesize: 5,
+                maxFiles: 5,
+                parallelUploads: 5,
+                uploadMultiple: true,
                 acceptedFiles: ".pdf",
                 addRemoveLinks: true,
                 autoProcessQueue: false,
                 init: function() {
+                    var MyDropzone = this;
 
                     //Aksi ketika button upload di klik
                     $("#button").click(function (e) {
@@ -38,16 +42,19 @@
                         MyDropzone.processQueue();
                     });
 
-                    this.on('sending', function(file, xhr, formData) {
+                    this.on('successmultiple', function(files, response) {
                         //tambahkan semua input form ke formdata dropzone yang akan post
-                        var data = $('#pdf-upload').serializeArray();
-                        $.each(data, function(key, el) {
-                            formData.append(el.name, el.value);
+                        console.log("File berhasil diunggah: ", response);
+                        alert ("Semua file PDF berhasil diunggah!")
                         });
+                    
+                    this.on("error", function (file, response){
+                        console.log("Gagal mengunggah file: ", response);
+                        alert("Gagal mengunggah file PDF!")
                     });
 
                     this.on("queuecomplete", function () {
-                        alert ("File berhasil diunggah!");
+                        alert ("Semua file berhasil diproses!");
                     });
                 }
             });

@@ -46,9 +46,8 @@
                             <tbody>
                                 @foreach ($pendidikan as $key => $data)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
                                     <td>{{ $data->nama }}</td>
-                                    <td>{{ $data->tingkatan }}</td>
+                                    <td>{{ ['TK','SD','SMP','SMA/SMK','D3','D4/S1','S2','S3'][$data->tingkatan -1]??'Tidak diketahui'}}</td>
                                     <td>{{ $data->tahun_masuk }}</td>
                                     <td>{{ $data->tahun_keluar }}</td>
                                     <td>
