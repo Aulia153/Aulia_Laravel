@@ -81,17 +81,11 @@ class UploadController extends Controller
             'file.*' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
 
-        $uploadedFiles = [];
+        $image = $request->file('file');
+        $imageName = time() . '_' . uniqid() . '.' . $image->extension();
+        $image->move(public_path('img/dropzone'), $imageName);
 
-        if ($request->hasFile('file')) {
-            foreach ($request->file('file') as $image) {
-                $imageName = time() . '_' . uniqid() . '.' . $image->extension();
-                $image->move(public_path('img/dropzone'), $imageName);
-                $uploadedFiles[] = $imageName;
-            }
-        }
-
-        return response()->json(['success' => true, 'files' => $uploadedFiles]);
+        return response()->json(['success' => true, 'file' => $imageName]);
     }
 
     public function pdf_upload() {

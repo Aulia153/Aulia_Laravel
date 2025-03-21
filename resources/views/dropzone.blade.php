@@ -30,7 +30,7 @@
                 acceptedFiles: ".jpeg, .jpg, .png, .gif",
                 addRemoveLinks: true,
                 createImageThumbnails: true,
-                autoProcessQueue: false,
+                autoProcessQueue: true,
                 init: function() {
                     var MyDropzone = this;
 

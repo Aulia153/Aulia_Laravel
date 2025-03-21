@@ -16,4 +16,19 @@ class Pendidikan extends Model
         'tahun_masuk',
         'tahun_keluar',
     ];
+
+    public function getTingkatanAttribute($value)
+    {
+        $levels = [
+            1 => 'SD',
+            2 => 'SMP',
+            3 => 'SMA',
+            4 => 'D3',
+            5 => 'S1',
+            6 => 'S2',
+            7 => 'S3'
+        ];
+
+        return $levels[$value] ?? 'Tidak Diketahui';
+    }
 }
